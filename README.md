@@ -1,6 +1,4 @@
-Radmiraal.CouchDB
-=================
+Famelo.MongoDB
+==============
 
-This package is an extension on the TYPO3.CouchDB package.
-It's not meant as a replacement, nor will it be supported
-in the future.
+This package is a fork of TYPO3.CouchDB/Ramiraal.CouchDB to test MongoDB with TYPO3.Flow
