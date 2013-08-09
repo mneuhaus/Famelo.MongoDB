@@ -1,16 +1,13 @@
-Radmiraal:
-  CouchDB:
+Famelo:
+  MongoDB:
     persistence:
       backendOptions:
-        databaseName: ''
+        databaseName: 'foo'
         host: 'localhost'
-        port: 5984
-        username: ''
-        password: ''
-        ip: '127.0.0.1'
+        port: 27017
 TYPO3:
   Flow:
     object:
       excludeClasses:
-        'Doctrine.CouchDB' : ['.*']
-        'doctrine.couchdbodm' : ['.*']
+        'Doctrine.MongoDB' : ['.*']
+        'doctrine.mongodb-odm' : ['.*']

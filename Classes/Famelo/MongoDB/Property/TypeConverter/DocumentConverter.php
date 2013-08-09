@@ -1,8 +1,8 @@
 <?php
-namespace Radmiraal\CouchDB\Property\TypeConverter;
+namespace Famelo\MongoDB\Property\TypeConverter;
 
 /*                                                                        *
- * This script belongs to the Flow package "Radmiraal.CouchDB".           *
+ * This script belongs to the Flow package "Famelo.MongoDB".              *
  *                                                                        *
  * It is free software; you can redistribute it and/or modify it under    *
  * the terms of the GNU Lesser General Public License as published by the *
@@ -48,12 +48,12 @@ class DocumentConverter extends \TYPO3\Flow\Property\TypeConverter\PersistentObj
 	protected $priority = 2;
 
 	/**
-	 * @var \Doctrine\ODM\CouchDB\DocumentManager
+	 * @var \Doctrine\ODM\MongoDB\DocumentManager
 	 */
 	protected $documentManager;
 
 	/**
-	 * @var \Radmiraal\CouchDB\Persistence\DocumentManagerFactory
+	 * @var \Famelo\MongoDB\Persistence\DocumentManagerFactory
 	 */
 	protected $documentManagementFactory;
 
@@ -71,10 +71,10 @@ class DocumentConverter extends \TYPO3\Flow\Property\TypeConverter\PersistentObj
 	}
 
 	/**
-	 * @param \Radmiraal\CouchDB\Persistence\DocumentManagerFactory $documentManagerFactory
+	 * @param \Famelo\MongoDB\Persistence\DocumentManagerFactory $documentManagerFactory
 	 * @return void
 	 */
-	public function injectDocumentManagerFactory(\Radmiraal\CouchDB\Persistence\DocumentManagerFactory $documentManagerFactory) {
+	public function injectDocumentManagerFactory(\Famelo\MongoDB\Persistence\DocumentManagerFactory $documentManagerFactory) {
 		$this->documentManagementFactory = $documentManagerFactory;
 		$this->documentManager = $this->documentManagementFactory->create();
 	}
@@ -87,7 +87,7 @@ class DocumentConverter extends \TYPO3\Flow\Property\TypeConverter\PersistentObj
 	 * @return boolean
 	 */
 	public function canConvertFrom($source, $targetType) {
-		return $this->reflectionService->isClassAnnotatedWith($targetType, 'Doctrine\ODM\CouchDB\Mapping\Annotations\Document');
+		return $this->reflectionService->isClassAnnotatedWith($targetType, 'Doctrine\ODM\MongoDB\Mapping\Annotations\Document');
 	}
 
 	/**
@@ -157,7 +157,7 @@ class DocumentConverter extends \TYPO3\Flow\Property\TypeConverter\PersistentObj
 		}
 
 		foreach ($convertedChildProperties as $propertyName => $propertyValue) {
-			if ($this->reflectionService->isPropertyAnnotatedWith($targetType, $propertyName, 'Doctrine\ODM\CouchDB\Mapping\Annotations\Attachments')) {
+			if ($this->reflectionService->isPropertyAnnotatedWith($targetType, $propertyName, 'Doctrine\ODM\MongoDB\Mapping\Annotations\Attachments')) {
 				$attachments = array();
 				foreach ($propertyValue as $version => $value) {
 					$safeFileName = preg_replace('/[^a-zA-Z-_0-9\.]*/', '', $value['name']);

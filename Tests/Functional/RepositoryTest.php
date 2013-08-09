@@ -1,8 +1,8 @@
 <?php
-namespace Radmiraal\CouchDB\Tests\Functional;
+namespace Famelo\MongoDB\Tests\Functional;
 
 /*                                                                        *
- * This script belongs to the Flow package "Radmiraal.CouchDB".           *
+ * This script belongs to the Flow package "Famelo.MongoDB".              *
  *                                                                        *
  * It is free software; you can redistribute it and/or modify it under    *
  * the terms of the GNU Lesser General Public License as published by the *
@@ -21,7 +21,7 @@ namespace Radmiraal\CouchDB\Tests\Functional;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use \Radmiraal\CouchDB\Tests\Functional\Fixtures\Domain\Model\Article;
+use \Famelo\MongoDB\Tests\Functional\Fixtures\Domain\Model\Article;
 
 /**
  *
@@ -29,13 +29,13 @@ use \Radmiraal\CouchDB\Tests\Functional\Fixtures\Domain\Model\Article;
 class RepositoryTest extends AbstractFunctionalTest {
 
 	/**
-	 * @var \Radmiraal\CouchDB\Tests\Functional\Fixtures\Domain\Repository\ArticleRepository
+	 * @var \Famelo\MongoDB\Tests\Functional\Fixtures\Domain\Repository\ArticleRepository
 	 */
 	protected $articleRepository;
 
 	public function setUp() {
 		parent::setUp();
-		$this->articleRepository = $this->objectManager->get('\Radmiraal\CouchDB\Tests\Functional\Fixtures\Domain\Repository\ArticleRepository');
+		$this->articleRepository = $this->objectManager->get('\Famelo\MongoDB\Tests\Functional\Fixtures\Domain\Repository\ArticleRepository');
 		$this->articleRepository->injectDocumentManagerFactory($this->documentManagerFactory);
 	}
 
@@ -44,7 +44,7 @@ class RepositoryTest extends AbstractFunctionalTest {
 	 */
 	public function repositoryGetEntityClassNameReturnsCorrectModelName() {
 		$this->assertEquals(
-			'Radmiraal\CouchDB\Tests\Functional\Fixtures\Domain\Model\Article',
+			'Famelo\MongoDB\Tests\Functional\Fixtures\Domain\Model\Article',
 			$this->articleRepository->getEntityClassName()
 		);
 	}

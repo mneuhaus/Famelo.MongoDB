@@ -1,8 +1,8 @@
 <?php
-namespace Radmiraal\CouchDB\Tests\Functional;
+namespace Famelo\MongoDB\Tests\Functional;
 
 /*                                                                        *
- * This script belongs to the Flow package "Radmiraal.CouchDB".           *
+ * This script belongs to the Flow package "Famelo.MongoDB".              *
  *                                                                        *
  * It is free software; you can redistribute it and/or modify it under    *
  * the terms of the GNU Lesser General Public License as published by the *
@@ -45,8 +45,8 @@ class DocumentManagerTest extends AbstractFunctionalTest {
 	 * @test
 	 */
 	public function doctrineOdmAnnotationsCanBeLoaded() {
-		$annotation = new \Doctrine\ODM\CouchDB\Mapping\Annotations\Document();
-		$this->assertInstanceOf('Doctrine\ODM\CouchDB\Mapping\Annotations\Document', $annotation);
+		$annotation = new \Doctrine\ODM\MongoDB\Mapping\Annotations\Document();
+		$this->assertInstanceOf('Doctrine\ODM\MongoDB\Mapping\Annotations\Document', $annotation);
 	}
 
 }

@@ -1,8 +1,8 @@
 <?php
-namespace Radmiraal\CouchDB\Persistence;
+namespace Famelo\MongoDB\Persistence;
 
 /*                                                                        *
- * This script belongs to the Flow package "Radmiraal.CouchDB".           *
+ * This script belongs to the Flow package "Famelo.MongoDB".              *
  *                                                                        *
  * It is free software; you can redistribute it and/or modify it under    *
  * the terms of the GNU Lesser General Public License as published by the *
@@ -21,7 +21,7 @@ namespace Radmiraal\CouchDB\Persistence;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use Doctrine\ODM\CouchDB\Mapping\Annotations as ODM;
+use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
 /**
  * @ODM\Document

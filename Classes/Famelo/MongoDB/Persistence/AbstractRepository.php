@@ -1,8 +1,8 @@
 <?php
-namespace Radmiraal\CouchDB\Persistence;
+namespace Famelo\MongoDB\Persistence;
 
 /*                                                                        *
- * This script belongs to the Flow package "Radmiraal.CouchDB".           *
+ * This script belongs to the Flow package "Famelo.MongoDB".              *
  *                                                                        *
  * It is free software; you can redistribute it and/or modify it under    *
  * the terms of the GNU Lesser General Public License as published by the *
@@ -41,12 +41,12 @@ abstract class AbstractRepository implements \TYPO3\Flow\Persistence\RepositoryI
 	protected $persistenceManager;
 
 	/**
-	 * @var \Doctrine\ODM\CouchDB\DocumentRepository
+	 * @var \Doctrine\ODM\MongoDB\DocumentRepository
 	 */
 	protected $backend;
 
 	/**
-	 * @var \Doctrine\ODM\CouchDB\DocumentManager
+	 * @var \Doctrine\ODM\MongoDB\DocumentManager
 	 */
 	protected $documentManager;
 
@@ -59,7 +59,7 @@ abstract class AbstractRepository implements \TYPO3\Flow\Persistence\RepositoryI
 	protected $entityClassName;
 
 	/**
-	 * @var \Radmiraal\CouchDB\Persistence\DocumentManagerFactory
+	 * @var \Famelo\MongoDB\Persistence\DocumentManagerFactory
 	 */
 	protected $documentManagementFactory;
 
@@ -69,10 +69,10 @@ abstract class AbstractRepository implements \TYPO3\Flow\Persistence\RepositoryI
 	protected $defaultOrderings = array();
 
 	/**
-	 * @param \Radmiraal\CouchDB\Persistence\DocumentManagerFactory $documentManagerFactory
+	 * @param \Famelo\MongoDB\Persistence\DocumentManagerFactory $documentManagerFactory
 	 * @return void
 	 */
-	public function injectDocumentManagerFactory(\Radmiraal\CouchDB\Persistence\DocumentManagerFactory $documentManagerFactory) {
+	public function injectDocumentManagerFactory(\Famelo\MongoDB\Persistence\DocumentManagerFactory $documentManagerFactory) {
 		$this->documentManagementFactory = $documentManagerFactory;
 		$this->documentManager = $this->documentManagementFactory->create();
 		$this->backend = $this->documentManager->getRepository($this->getEntityClassName());

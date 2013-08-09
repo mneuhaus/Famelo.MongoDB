@@ -1,8 +1,8 @@
 <?php
-namespace Radmiraal\CouchDB\Tests\Functional;
+namespace Famelo\MongoDB\Tests\Functional;
 
 /*                                                                        *
- * This script belongs to the Flow package "Radmiraal.CouchDB".           *
+ * This script belongs to the Flow package "Famelo.MongoDB".              *
  *                                                                        *
  * It is free software; you can redistribute it and/or modify it under    *
  * the terms of the GNU Lesser General Public License as published by the *
@@ -21,7 +21,7 @@ namespace Radmiraal\CouchDB\Tests\Functional;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use \Radmiraal\CouchDB\Tests\Functional\Fixtures\Domain\Model\Article as Article;
+use \Famelo\MongoDB\Tests\Functional\Fixtures\Domain\Model\Article as Article;
 
 /**
  *
@@ -81,7 +81,7 @@ class PersistenceTest extends AbstractFunctionalTest {
 		$this->documentManager->persist($article);
 		$this->documentManager->flush();
 
-		$articles = $this->documentManager->getRepository('\Radmiraal\CouchDB\Tests\Functional\Fixtures\Domain\Model\Article')->findAll();
+		$articles = $this->documentManager->getRepository('\Famelo\MongoDB\Tests\Functional\Fixtures\Domain\Model\Article')->findAll();
 
 		$this->assertEquals(1, count($articles));
 		$this->assertInstanceOf('DateTime', $articles[0]->getCreated());

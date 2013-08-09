@@ -1,8 +1,8 @@
 <?php
-namespace Radmiraal\CouchDB\Tests\Functional\Fixtures\Domain\Repository;
+namespace Famelo\MongoDB\Tests\Functional\Fixtures\Domain\Repository;
 
 /*                                                                        *
- * This script belongs to the Flow package "Radmiraal.CouchDB".           *
+ * This script belongs to the Flow package "Famelo.MongoDB".              *
  *                                                                        *
  * It is free software; you can redistribute it and/or modify it under    *
  * the terms of the GNU Lesser General Public License as published by the *
@@ -26,7 +26,7 @@ use TYPO3\Flow\Annotations as Flow;
 /**
  * @Flow\Scope("singleton")
  */
-class ArticleRepository extends \Radmiraal\CouchDB\Persistence\AbstractRepository {
+class ArticleRepository extends \Famelo\MongoDB\Persistence\AbstractRepository {
 
 }
 

@@ -1,8 +1,8 @@
 <?php
-namespace Radmiraal\CouchDB\Tests\Functional;
+namespace Famelo\MongoDB\Tests\Functional;
 
 	/*                                                                        *
-	 * This script belongs to the Flow package "Radmiraal.CouchDB".           *
+	 * This script belongs to the Flow package "Famelo.MongoDB".              *
 	 *                                                                        *
 	 * It is free software; you can redistribute it and/or modify it under    *
 	 * the terms of the GNU Lesser General Public License as published by the *
@@ -30,17 +30,17 @@ class UnstructuredModelTest extends AbstractFunctionalTest {
 	 * @test
 	 */
 	public function aModelExtendingTheAbstractModelCanBePersisted() {
-		$model = new \Radmiraal\CouchDB\Tests\Functional\Fixtures\Domain\Model\UnstructuredModel(array(
+		$model = new \Famelo\MongoDB\Tests\Functional\Fixtures\Domain\Model\UnstructuredModel(array(
 			'title' => 'Foo'
 		));
 
 		$this->documentManager->persist($model);
 		$this->documentManager->flush();
 
-		$result = $this->documentManager->getRepository('\Radmiraal\CouchDB\Tests\Functional\Fixtures\Domain\Model\UnstructuredModel')->findAll();
+		$result = $this->documentManager->getRepository('\Famelo\MongoDB\Tests\Functional\Fixtures\Domain\Model\UnstructuredModel')->findAll();
 
 		$this->assertEquals(1, count($result));
-		$this->assertInstanceOf('Radmiraal\CouchDB\Tests\Functional\Fixtures\Domain\Model\UnstructuredModel', $result[0]);
+		$this->assertInstanceOf('Famelo\MongoDB\Tests\Functional\Fixtures\Domain\Model\UnstructuredModel', $result[0]);
 		$this->assertEquals('Foo', $result[0]->getTitle());
 	}
 

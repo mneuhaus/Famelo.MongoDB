@@ -1,8 +1,8 @@
 <?php
-namespace Radmiraal\CouchDB\Aspect;
+namespace Famelo\MongoDB\Aspect;
 
 /*                                                                        *
- * This script belongs to the Flow package "Radmiraal.CouchDB".           *
+ * This script belongs to the Flow package "Famelo.MongoDB".              *
  *                                                                        *
  * It is free software; you can redistribute it and/or modify it under    *
  * the terms of the GNU Lesser General Public License as published by the *
@@ -29,20 +29,20 @@ use TYPO3\Flow\Annotations as Flow;
 class PersistenceManagerAspect {
 
 	/**
-	 * @var \Doctrine\ODM\CouchDB\DocumentManager
+	 * @var \Doctrine\ODM\MongoDB\DocumentManager
 	 */
 	protected $documentManager;
 
 	/**
-	 * @var \Radmiraal\CouchDB\Persistence\DocumentManagerFactory
+	 * @var \Famelo\MongoDB\Persistence\DocumentManagerFactory
 	 */
 	protected $documentManagementFactory;
 
 	/**
-	 * @param \Radmiraal\CouchDB\Persistence\DocumentManagerFactory $documentManagerFactory
+	 * @param \Famelo\MongoDB\Persistence\DocumentManagerFactory $documentManagerFactory
 	 * @return void
 	 */
-	public function injectDocumentManagerFactory(\Radmiraal\CouchDB\Persistence\DocumentManagerFactory $documentManagerFactory) {
+	public function injectDocumentManagerFactory(\Famelo\MongoDB\Persistence\DocumentManagerFactory $documentManagerFactory) {
 		$this->documentManagementFactory = $documentManagerFactory;
 		$this->documentManager = $this->documentManagementFactory->create();
 	}
@@ -59,7 +59,7 @@ class PersistenceManagerAspect {
 			return $identityArray;
 		} catch (\TYPO3\Flow\Persistence\Exception\UnknownObjectException $exception) {
 			$object = $joinPoint->getMethodArgument('object');
-			if (method_exists($object, 'getId')) {
+			if (property_exists($object, 'id')) {
 				$objectIdentifier = $object->getId();
 				if (!empty($objectIdentifier)) {
 					return array('__identity' => $objectIdentifier);
@@ -100,7 +100,7 @@ class PersistenceManagerAspect {
 				if ($document !== NULL) {
 					return $document;
 				}
-			} catch (\Doctrine\ODM\CouchDB\Mapping\MappingException $exception) {
+			} catch (\Doctrine\ODM\MongoDB\Mapping\MappingException $exception) {
 				// probably not a valid document, so ignore it
 			}
 		}

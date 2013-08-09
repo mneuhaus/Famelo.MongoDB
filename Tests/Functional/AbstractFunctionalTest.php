@@ -1,8 +1,8 @@
 <?php
-namespace Radmiraal\CouchDB\Tests\Functional;
+namespace Famelo\MongoDB\Tests\Functional;
 
 /*                                                                        *
- * This script belongs to the Flow package "Radmiraal.CouchDB".           *
+ * This script belongs to the Flow package "Famelo.MongoDB".              *
  *                                                                        *
  * It is free software; you can redistribute it and/or modify it under    *
  * the terms of the GNU Lesser General Public License as published by the *
@@ -28,12 +28,12 @@ namespace Radmiraal\CouchDB\Tests\Functional;
 abstract class AbstractFunctionalTest extends \TYPO3\Flow\Tests\FunctionalTestCase {
 
 	/**
-	 * @var \Radmiraal\CouchDB\Persistence\DocumentManagerFactory
+	 * @var \Famelo\MongoDB\Persistence\DocumentManagerFactory
 	 */
 	protected $documentManagerFactory;
 
 	/**
-	 * @var \Doctrine\ODM\CouchDB\DocumentManager
+	 * @var \Doctrine\ODM\MongoDB\DocumentManager
 	 */
 	protected $documentManager;
 
@@ -55,14 +55,14 @@ abstract class AbstractFunctionalTest extends \TYPO3\Flow\Tests\FunctionalTestCa
 
 		$this->settings = $this->objectManager->getSettingsByPath(array('Radmiraal', 'CouchDB', 'persistence', 'backendOptions'));
 
-		$this->documentManagerFactory = $this->objectManager->get('\Radmiraal\CouchDB\Persistence\DocumentManagerFactory');
+		$this->documentManagerFactory = $this->objectManager->get('\Famelo\MongoDB\Persistence\DocumentManagerFactory');
 		$this->documentManager = $this->documentManagerFactory->create();
 
-		$couchDbHelper = new \Radmiraal\CouchDB\CouchDBHelper();
-		$couchDbHelper->injectSettings($this->objectManager->getSettingsByPath(array('Radmiraal', 'CouchDB')));
-		$couchDbHelper->injectDocumentManagerFactory($this->documentManagerFactory);
-		$couchDbHelper->createDatabaseIfNotExists();
-		$couchDbHelper->createOrUpdateDesignDocuments();
+		$mongoDbHelper = new \Famelo\MongoDB\MongoDBHelper();
+		$mongoDbHelper->injectSettings($this->objectManager->getSettingsByPath(array('Radmiraal', 'CouchDB')));
+		$mongoDbHelper->injectDocumentManagerFactory($this->documentManagerFactory);
+		$mongoDbHelper->createDatabaseIfNotExists();
+		$mongoDbHelper->createOrUpdateDesignDocuments();
 	}
 
 	/**

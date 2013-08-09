@@ -1,8 +1,8 @@
 <?php
-namespace Radmiraal\CouchDB\View;
+namespace Famelo\MongoDB;
 
 /*                                                                        *
- * This script belongs to the Flow package "Radmiraal.CouchDB".           *
+ * This script belongs to the Flow package "Famelo.MongoDB".              *
  *                                                                        *
  * It is free software; you can redistribute it and/or modify it under    *
  * the terms of the GNU Lesser General Public License as published by the *
@@ -21,30 +21,21 @@ namespace Radmiraal\CouchDB\View;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use \TYPO3\Flow\Package\Package as BasePackage;
 
 /**
+ *
  */
-class Migration implements \Doctrine\CouchDB\View\DesignDocument {
+class Package extends BasePackage {
 
 	/**
-	 * @var array
+	 * @param \TYPO3\Flow\Core\Bootstrap $bootstrap The current bootstrap
+	 * @return void
 	 */
-	protected $options = array();
-
-	/**
-	 * @param array $options
-	 */
-	public function __construct(array $options) {
-		$this->options = $options;
-	}
-
-	/**
-	 * @return array
-	 */
-	public function getData() {
-		$folderDesignDocument = new \Doctrine\CouchDB\View\FolderDesignDocument($this->options['path']);
-		return $folderDesignDocument->getData();
+	public function boot(\TYPO3\Flow\Core\Bootstrap $bootstrap) {
+		$dispatcher = $bootstrap->getSignalSlotDispatcher();
+		$dispatcher->connect('TYPO3\Flow\Mvc\Dispatcher', 'afterControllerInvocation', 'Famelo\MongoDB\Persistence\DocumentManager', 'flushSlot');
+		$dispatcher->connect('TYPO3\Flow\Cli\SlaveRequestHandler', 'dispatchedCommandLineSlaveRequest', 'Famelo\MongoDB\Persistence\DocumentManager', 'flushSlot');
 	}
 
 }

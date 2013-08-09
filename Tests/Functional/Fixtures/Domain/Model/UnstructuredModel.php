@@ -1,8 +1,8 @@
 <?php
-namespace Radmiraal\CouchDB\Tests\Functional\Fixtures\Domain\Model;
+namespace Famelo\MongoDB\Tests\Functional\Fixtures\Domain\Model;
 
 /*                                                                        *
- * This script belongs to the Flow package "Radmiraal.CouchDB".           *
+ * This script belongs to the Flow package "Famelo.MongoDB".              *
  *                                                                        *
  * It is free software; you can redistribute it and/or modify it under    *
  * the terms of the GNU Lesser General Public License as published by the *
@@ -21,12 +21,12 @@ namespace Radmiraal\CouchDB\Tests\Functional\Fixtures\Domain\Model;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use Doctrine\ODM\CouchDB\Mapping\Annotations as ODM;
+use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
 /**
  * @ODM\Document(indexed=true)
  */
-class UnstructuredModel extends \Radmiraal\CouchDB\Persistence\AbstractDocument {
+class UnstructuredModel extends \Famelo\MongoDB\Persistence\AbstractDocument {
 
 }
 

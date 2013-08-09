@@ -1,8 +1,8 @@
 <?php
-namespace Radmiraal\CouchDB\Tests\Unit;
+namespace Famelo\MongoDB\Tests\Unit;
 
 /*                                                                        *
- * This script belongs to the Flow package "Radmiraal.CouchDB".           *
+ * This script belongs to the Flow package "Famelo.MongoDB".              *
  *                                                                        *
  * It is free software; you can redistribute it and/or modify it under    *
  * the terms of the GNU Lesser General Public License as published by the *
@@ -29,7 +29,7 @@ class DocumentTest extends \TYPO3\Flow\Tests\UnitTestCase {
 	protected $document;
 
 	public function setUp() {
-		$this->document = new \Radmiraal\CouchDB\Tests\Unit\Fixtures\Document();
+		$this->document = new \Famelo\MongoDB\Tests\Unit\Fixtures\Document();
 	}
 
 	/**
